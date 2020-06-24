@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Leave your review for "{{ book_info_list.title }}" Book. Written by {{ book_info_list.author }} in {{ book_info_list.year }}
+{% endblock %}
+
+{% block main %}
+    <div>
+        <h3>Leave your review for "{{ book_info_list.title }}". Written by {{ book_info_list.author }} in {{ book_info_list.year }}.</h3>
+    </div>
+
+     {% if book_club_user_review %}
+     <p> You already left a review for this book </p>
+     {% else %}
+     <!-- onsubmit="setTimeout(function(){window.location.reload();},10);" --!>
+    <form action="/book_review_success/{{ book_info_list.isbn }}" id="form" name= "form" onsubmit="setTimeout(reloadThePage(), 5000)" method="post" style="max-width : 300px; text-align : center; margin: auto;">
+        <h5>Submit Your review for the book</h5>
+        <div class="form-group" class="form-group col-md-6" >
+        <label for="exampleFormControlSelect1">Rate the book from 1 (bad) to 5 (very good)</label>
+        <select class="form-control" id="exampleFormControlSelect1" name="rating">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+        <div class="form-group" class="form-group col-md-4" >
+            <textarea class="form-control-cs" name="review_text" placeholder="Your review" type="textarea">
+              </textarea>
+        </div>
+                <button class="btn btn-primary" type="submit" >Submit review</button>
+    </form>
+    <script>
+    function reloadThePage(){
+        window.location.reload(True);
+    }
+    </script>
+    {% endif %}
+{% endblock %}

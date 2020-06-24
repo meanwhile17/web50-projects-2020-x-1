@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Your review for "{{ book_info_list.title }}" Book was accepted.
+{% endblock %}
+
+{% block head %}
+<meta http-equiv="refresh" content="1; URL=/book/{{ book_info_list.isbn }}" />
+{% endblock %}
+
+{% block main %}
+    <div>
+        <h3>Your review for "{{ book_info_list.title }}" Book was accepted.</h3>
+    </div>
+    <h2> Please wait while you are being redirected.</h2>
+
+
+    <h3> If you are not redirected, please press this button </h3>
+
+
+{% endblock %}
